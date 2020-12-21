@@ -3,6 +3,7 @@ import "../Css/Info.css";
 import { Button, Card } from "semantic-ui-react";
 
 const Info = (props) => {
+  console.log(props);
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
@@ -20,12 +21,14 @@ const Info = (props) => {
           >
             {tab.company}
           </button>
-          <Card
-            header={tab.title}
-            meta={tab.dates}
-            description={tab.duties}
-            isOpen={true}
-          />
+          {isOpen && (
+            <Card
+              header={tab.title}
+              meta={tab.dates}
+              description={tab.duties}
+              isOpen={true}
+            />
+          )}
         </div>
       ))}
     </>

@@ -13,7 +13,9 @@ function App() {
 
   const getTabAPI = async () => {
     let res = await axios.get(url);
-    setTab(res.data);
+    const newData = res.data.map((v) => ({ ...v, isOpen: false }));
+    console.log(newData);
+    setTab(newData);
   };
 
   return (
