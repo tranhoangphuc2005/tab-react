@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 let url = "https://course-api.com/react-tabs-project";
 
 function App() {
-  const [tabs, setTab] = useState();
+  const [tabs, setTab] = useState([]);
 
   useEffect(() => {
     getTabAPI();
