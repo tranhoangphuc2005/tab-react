@@ -3,30 +3,24 @@ import "../Css/Info.css";
 import { Button, Card } from "semantic-ui-react";
 
 const Info = (props) => {
-  console.log(props);
-  const [isOpen, setIsOpen] = useState(false);
   return (
     <>
       {props.tabs.map((tab) => (
-        <div>
+        <div key={tab.id}>
           <button
-            class="ui button"
+            className={"ui button"}
             onClick={() => {
-              if (isOpen === false) {
-                setIsOpen(true);
-              } else {
-                setIsOpen(false);
-              }
+              props.changeIsOpen(tab.id);
             }}
           >
             {tab.company}
           </button>
-          {isOpen && (
+          {tab.isOpen && (
             <Card
               header={tab.title}
               meta={tab.dates}
               description={tab.duties}
-              isOpen={true}
+              isOpen={tab.isOpen}
             />
           )}
         </div>

@@ -14,13 +14,23 @@ function App() {
   const getTabAPI = async () => {
     let res = await axios.get(url);
     const newData = res.data.map((v) => ({ ...v, isOpen: false }));
-    console.log(newData);
+    setTab(newData);
+  };
+
+  const changeIsOpen = (id) => {
+    const newTabs = [...tabs];
+    const newData = newTabs.map((tab) => {
+      if (tab.id === id) {
+        tab.isOpen = !tab.isOpen;
+      }
+      return tab;
+    });
     setTab(newData);
   };
 
   return (
     <>
-      <Info tabs={tabs}></Info>
+      <Info tabs={tabs} changeIsOpen={changeIsOpen}></Info>
     </>
   );
 }
